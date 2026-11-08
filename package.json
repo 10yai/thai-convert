@@ -1,0 +1,41 @@
+{
+  "name": "thai-convert",
+  "version": "0.1.0",
+  "description": "Convert THB amounts into Thai words, e.g. 138 → หนึ่งร้อยสามสิบแปดบาทถ้วน",
+  "keywords": ["thai", "baht", "thai-numerals", "receipt", "currency", "บาทถ้วน", "สตางค์"],
+  "license": "MIT",
+  "author": "10yai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10yai/thai-convert.git"
+  },
+  "bugs": {
+    "url": "https://github.com/10yai/thai-convert/issues"
+  },
+  "homepage": "https://github.com/10yai/thai-convert#readme",
+  "main": "dist/es5/index.js",
+  "module": "dist/es6/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es6/index.js",
+      "require": "./dist/es5/index.js",
+      "default": "./dist/es5/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc -p tsconfig.es5.json && tsc -p tsconfig.es6.json && node scripts/postbuild.js",
+    "test": "npm run build && node --test test/index.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
